@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Limelight&display=swap');
+
+.jost-regular {
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+nav{
+    font-family: "Jost", sans-serif;
+  font-weight: 600;
+  background-color:rgb(182, 181, 181);
+}
+
+.inputs form{
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-projects {
+  margin-top: 5vh;
+  display: grid;
+  grid-template-columns:repeat(3, 33vh [col-start])
+}
+input,label,select,.heading,button {
+  margin: 0.7vh;
+}
+
