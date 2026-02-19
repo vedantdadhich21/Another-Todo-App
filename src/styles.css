@@ -20,7 +20,7 @@ nav{
 .todo-projects {
   margin-top: 5vh;
   display: grid;
-  grid-template-columns:repeat(3, 33vh [col-start])
+  grid-template-columns:repeat(3, 33vw [col-start])
 }
 input,label,select,.heading,button {
   margin: 0.7vh;

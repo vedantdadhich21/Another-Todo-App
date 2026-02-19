@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Will Never Do</title>
     <link rel="stylesheet" href="styles.css">
-    
+    <!-- <link rel="stylesheet" href="https://unpkg.com/@knadh/oat/oat.min.css">
+<script src="https://unpkg.com/@knadh/oat/oat.min.js" defer></script> -->
 </head>
-<body>
+<body data-theme="dark">
     <nav class="navbar">Another ToDo App</nav>
 
     <div class="todo-projects">
@@ -16,8 +17,9 @@
             <div class="heading"> Add a new Task</div>
             <form action="">
                 <div class="projectChoose">
-                    <label for="projectList"> Select Projects/List to add</label>
+                    <label for="projectList"> Select Projects/List to add
                     <select name="project" id="projectList"></select>
+                    </label>
                     <input type="text" id="newItem" placeholder="Add new project">
                     <button id="newProject" type="button">Add</button>
                 </div>

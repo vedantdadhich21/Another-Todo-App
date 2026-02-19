@@ -1,4 +1,6 @@
-let todo = []
+import { projects } from "./project.js";
+import { renderProject } from "./ui/renderProjects.js";
+
 class Todo{
     constructor(title,description,dueDate,priority){
         this.title = title;
@@ -23,11 +25,11 @@ form.addEventListener("submit",addTodo);
 function addTodo(e){
     e.preventDefault();
     const formData = new FormData(form);
+    const projectName = formData.get('project');
     const newTodo = new Todo(formData.get('title'),formData.get('description'),formData.get('dueDate'),formData.get('priority'));
-    if(newTodo.title != "" && todo.findIndex(todos => todos.title === newTodo.title) == -1 ){
-        todo.push(newTodo);
-        console.log(newTodo);
+    if(newTodo.title != "" && projects[projectName].findIndex(data => data.title === newTodo.title) == -1){
+        projects[projectName].push(newTodo);
+        renderProject(projectName)
     }
-    
 }
 export {Todo};
