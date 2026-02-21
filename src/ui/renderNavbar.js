@@ -9,6 +9,7 @@ function renderNavbar(){
         var btn = document.createElement('button')
        btn.innerText = element;
        btn.dataset.project = element;
+       btn.classList.add("project")
        projectList.appendChild(btn);
        if(element === activeProject)
             btn.classList.add("outline");

@@ -1,77 +1,82 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Will Never Do</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/@knadh/oat/oat.min.css">
-<script src="https://unpkg.com/@knadh/oat/oat.min.js" defer></script>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@knadh/oat/oat.min.css" />
+    <script src="https://unpkg.com/@knadh/oat/oat.min.js" defer></script>
 </head>
+
 <body data-theme="dark">
-    <header class="header">Another ToDo App</header>
-    <main>
-    <nav>
-        <div class="currProjects"> 
-           
-
-        </div>
-        <br>
-        <div class="addProjects"> 
-
-
-           <button commandfor="demo-dialog-form" command="show-modal">Add New Projects</button>
-<dialog id="demo-dialog-form" closedby="any">
-  <form method="dialog">
     <header>
-      <h3>Add New Project</h3>
+        <div class="head">Another ToDo App</div>
     </header>
-    <div>
-      <label> Project Name <input name="newItem" id="newItem" required></label>
-    </div>
-    <footer>
-      <button type="button" commandfor="demo-dialog-form" command="close" class="outline">Cancel</button>
-      <button value="save" id="newProject" >Save</button>
-    </footer>
-  </form>
-</dialog>
+    <main>
+        <nav>
+            <div class="currProjects"></div>
+            <br />
+            <div class="addProjects">
+                <button commandfor="demo-dialog-form" command="show-modal" style="width: 100%;">
+                    Add New Projects
+                </button>
+                <dialog id="demo-dialog-form" closedby="any">
+                    <form method="dialog">
+                        <header>
+                            <h3>Add New Project</h3>
+                        </header>
+                        <div>
+                            <label>
+                                Project Name <input name="newItem" id="newItem" required /></label>
+                        </div>
+                        <footer>
+                            <button type="button" commandfor="demo-dialog-form" command="close" class="outline">
+                                Cancel
+                            </button>
+                            <button value="save" id="newProject">Save</button>
+                        </footer>
+                    </form>
+                </dialog>
+            </div>
+        </nav>
+
+        <br />
+
+        <div class="todos">
+             <div class="todo-projects"></div>
+            <button commandfor="newTodo" command="show-modal" class="ghost" id="addTodo">Add newTodo</button>
+            <dialog id="newTodo" closedby="any">
+                <form method="dialog" id="todo">
+                    <header>
+                        <h3>Add new Todo</h3>
+                    </header>
+                    <div>
+                        <label> Title <input name="title" required /></label>
+                        <label> Description <input name="description" /></label>
+                        <label for="dueDate">Due Date
+                            <input type="date" name="dueDate" required />
+                        </label>
+                        <label for="priority">Priority
+                            <select name="priority" id="">
+                                <option value="low">Low</option>
+                                <option value="mid">Mid</option>
+                                <option value="high">High</option>
+                            </select>
+                        </label>
+                    </div>
+                    <footer>
+                        <button type="button" commandfor="newTodo" command="close" class="outline">
+                            Cancel
+                        </button>
+                        <button value="save" id="createTodo">Add</button>
+                    </footer>
+                </form>
+            </dialog>
+           
         </div>
-    </nav>
-
-    <br>
-
-<button commandfor="newTodo" command="show-modal">Add newTodo</button>
-    <dialog id="newTodo" closedby="any">
-        <form method="dialog" id="todo">
-            <header>
-                <h3>Add new Todo</h3>
-            </header>
-            <div>
-                <label> Title <input  name="title" required ></label>
-                <label> Description <input  name="description" ></label>
-                <label for="dueDate" >Due Date
-                <input type="date" name="dueDate" required >
-                </label>
-                <label for="priority">Priority
-                <select name="priority" id="" >
-                <option value="low">Low</option>
-                <option value="mid">Mid</option>
-                <option value="high">High</option>
-                </select>
-                </label>
-                </div>
-            <footer>
-                <button type="button" commandfor="newTodo" command="close" class="outline">Cancel</button>
-                <button value="save" id="createTodo" >Add</button>
-            </footer>
-        </form>
-</dialog>
-
-
-    <div class="todo-projects">
-
-      </div>
     </main>
-
 </body>
+
 </html>

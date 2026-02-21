@@ -5,26 +5,47 @@
   font-weight: 400;
   font-style: normal;
 }
+body{
+  height: 100vh;
+}
 
 header{
- font-size: 3rem;
- 
+  display: flex;
+  justify-content: center;
+  background-color: rgb(0, 52, 80);
 }
-.active{
-  border: ;
+.head{
+  font-size: 3rem;
 }
-
-/* .inputs form{
+main{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+.currProjects{
   display: flex;
   flex-direction: column;
-} */
-
-/* .todo-projects {
-  margin-top: 5vh;
-  display: grid;
-  grid-template-columns:repeat(3, 33vw [col-start])
-} */
-/* input,label,select,.heading,button {
-  margin: 0.7vh;
-} */
+  row-gap: 0.5rem;
+}
+nav{
+  height: 100%;
+  padding: 1vw;
+  border-right: solid;
+  border-right: rem;
+}
+.singleTodo{
+  border: solid;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem 0.5rem;
+}
+.todos{
+  width: 100%;
+  margin-left: 2rem;
+}
+#addTodo{
+ width: 100%;
+ text-align: left;
+ display: block;
+}
 
