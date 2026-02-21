@@ -6,23 +6,25 @@
   font-style: normal;
 }
 
-nav{
-    font-family: "Jost", sans-serif;
-  font-weight: 600;
-  background-color:rgb(182, 181, 181);
+header{
+ font-size: 3rem;
+ 
+}
+.active{
+  border: ;
 }
 
-.inputs form{
+/* .inputs form{
   display: flex;
   flex-direction: column;
-}
+} */
 
-.todo-projects {
+/* .todo-projects {
   margin-top: 5vh;
   display: grid;
   grid-template-columns:repeat(3, 33vw [col-start])
-}
-input,label,select,.heading,button {
+} */
+/* input,label,select,.heading,button {
   margin: 0.7vh;
-}
+} */
 

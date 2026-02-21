@@ -1,29 +1,31 @@
+import { renderNavbar } from "./ui/renderNavbar.js";
+import { renderTodos } from "./ui/renderTodo.js";
 const projects = {
     default: [],
 };
-const select = document.querySelector("#projectList")
-import {renderProject} from "./ui/renderProjects.js"
-function populateList(projects){
-    Object.keys(projects).forEach(element => {
-        var option = document.createElement("option");
-        option.innerHTML = element;
-        select.appendChild(option);
-    });
-}
-
+let activeProject = "default";
 const newpro = document.querySelector("#newProject");
 newpro.addEventListener("click",addItem)
 function addItem(){
+    console.log("i ran")
+    const input = document.querySelector("#newItem");
     const text = document.querySelector("#newItem").value;
     if(text.trim() != "" && !projects[text]){
-        var option = document.createElement("option");
-        option.innerHTML = text;
-        select.appendChild(option);
         projects[text] = [];
+        renderNavbar();
     }
+    input.value =""
 }
 
-populateList(projects)
+document.querySelector(".currProjects")
+.addEventListener("click", e => {
 
-export  {projects};
+    if(!e.target.dataset.project) return;
+
+    activeProject = e.target.dataset.project;
+    renderNavbar();
+    renderTodos();
+
+});
+export  {projects,activeProject};
 
