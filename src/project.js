@@ -15,6 +15,7 @@ function addItem(){
         renderNavbar();
     }
     input.value =""
+     document.querySelector('#demo-dialog-form').close();
 }
 
 document.querySelector(".currProjects")

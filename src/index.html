@@ -35,7 +35,7 @@
                             <button type="button" commandfor="demo-dialog-form" command="close" class="outline">
                                 Cancel
                             </button>
-                            <button value="save" id="newProject">Save</button>
+                            <button type="submit" value="save" id="newProject">Save</button>
                         </footer>
                     </form>
                 </dialog>
@@ -45,6 +45,7 @@
         <br />
 
         <div class="todos">
+            <div class="projectTitle"></div>
              <div class="todo-projects"></div>
             <button commandfor="newTodo" command="show-modal" class="ghost" id="addTodo">Add newTodo</button>
             <dialog id="newTodo" closedby="any">
@@ -53,10 +54,10 @@
                         <h3>Add new Todo</h3>
                     </header>
                     <div>
-                        <label> Title <input name="title" required /></label>
-                        <label> Description <input name="description" /></label>
+                        <label> Title <input name="title" id="title" required /></label>
+                        <label> Description <input name="description" id="description" /></label>
                         <label for="dueDate">Due Date
-                            <input type="date" name="dueDate" required />
+                            <input type="date" name="dueDate" id="dueDate" required />
                         </label>
                         <label for="priority">Priority
                             <select name="priority" id="">
@@ -70,7 +71,7 @@
                         <button type="button" commandfor="newTodo" command="close" class="outline">
                             Cancel
                         </button>
-                        <button value="save" id="createTodo">Add</button>
+                        <button type="submit" value="save" id="createTodo"  >Add</button>
                     </footer>
                 </form>
             </dialog>

@@ -19,10 +19,14 @@ class Todo{
     }
 }
 
-const btn = document.getElementById("createTodo")
-const form = document.getElementById("todo")
-btn.addEventListener("click",addTodo);
+const today = new Date().toISOString().split("T")[0];
+const date = document.querySelector('#dueDate');
+date.min = today;
+date.value = today;
 
+
+const form = document.getElementById("todo")
+form.addEventListener("submit",addTodo);
 function addTodo(e){
     e.preventDefault();
     const formData = new FormData(form);
@@ -32,5 +36,8 @@ function addTodo(e){
         projects[projectName].push(newTodo);
         renderTodos();
     }
+    document.querySelector('#newTodo').close();
+    document.querySelector("#title").value = ""
+    document.querySelector("#description").value = ""
 }
 export {Todo};
