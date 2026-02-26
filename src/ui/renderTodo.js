@@ -10,13 +10,25 @@ function renderTodos(){
         const div = document.createElement("div");
         div.classList.add("singleTodo");
         div.classList.add(`${todo.priority}`)
+        if(todo.completed){
+            div.classList.add('completed');
+        }
 
-        div.innerHTML = `
-            <h3>${todo.title}</h3>
-            <p>${todo.description}</p>
-            <small>${todo.dueDate}  
-            ${todo.priority} ${todo.checkList}</small>
-        `;
+       const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = todo.completed;
+
+        checkbox.addEventListener("change", () => {
+            todo.toggleCheckList();
+            renderTodos();
+        });
+
+        const label = document.createElement("div");
+        label.textContent = todo.title;
+
+        div.appendChild(checkbox);
+        div.appendChild(label);
+
 
         container.prepend(div);
     });
@@ -26,6 +38,7 @@ function renderTodos(){
     header.innerText = `${activeProject}`;
     header.classList.add("projectHeader")
     head.prepend(header);
+    console.log(projects)
 }
 
 export {renderTodos}

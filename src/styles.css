@@ -40,6 +40,8 @@ nav{
   border-radius: 0.5rem;
   padding: 1rem;
   margin: 1rem;
+  display: flex;
+  gap: 2vw;
 }
 .todos{
   width: 100%;
@@ -57,4 +59,16 @@ nav{
     box-shadow:none;
     background-color: #27272a;
 }
+.low{
+  border: solid rgb(0, 255, 13);
+}
+.mid{
+  border: solid rgb(251, 255, 0);
+}
+.high{
+  border: solid rgb(255, 17, 0);
+}
 
+.completed{
+  text-decoration: line-through;
+}

@@ -7,15 +7,10 @@ class Todo{
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
-        this.checkList = false;
+        this.completed = false;
     }
     toggleCheckList(){
-        if(this.checkList == false){
-            this.checkList = true;
-        }
-        else{
-            this.checkList = true;
-        }
+        this.completed = !this.completed;
     }
 }
 
