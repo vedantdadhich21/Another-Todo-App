@@ -1,11 +1,10 @@
-import { projects } from "../project.js";
-import { activeProject } from "../project.js";
+import { persist, projects, state } from "../project.js";
 function renderTodos(){
 
     const container = document.querySelector(".todo-projects");
    container.innerHTML = ""
 
-    projects[activeProject].forEach(todo => {
+    projects[state.activeProject].forEach(todo => {
 
         const div = document.createElement("div");
         div.classList.add("singleTodo");
@@ -19,7 +18,8 @@ function renderTodos(){
         checkbox.checked = todo.completed;
 
         checkbox.addEventListener("change", () => {
-            todo.toggleCheckList();
+            todo.completed = !todo.completed;
+            persist();
             renderTodos();
         });
 
@@ -33,9 +33,9 @@ function renderTodos(){
         container.prepend(div);
     });
     const head = document.querySelector('.projectTitle');
-    head.innerText = ""
+    head.innerText = "";
     const header = document.createElement('h2');
-    header.innerText = `${activeProject}`;
+    header.innerText = `${state.activeProject}`;
     header.classList.add("projectHeader")
     head.prepend(header);
     console.log(projects)

@@ -1,6 +1,5 @@
-import { projects } from "../project.js";
-import { renderTodo } from "./renderTodo.js";
-import { activeProject } from "../project.js";
+import { projects, state } from "../project.js";
+
 
 function renderNavbar(){
     const projectList = document.querySelector(".currProjects")
@@ -11,7 +10,7 @@ function renderNavbar(){
        btn.dataset.project = element;
        btn.classList.add("project")
        projectList.appendChild(btn);
-       if(element === activeProject)
+       if(element === state.activeProject)
             btn.classList.add("outline");
     });
 }
