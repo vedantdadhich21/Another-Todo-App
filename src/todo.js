@@ -1,9 +1,8 @@
 import { activeProject, persist, projects, state } from "./project.js";
 import { renderTodos } from "./ui/renderTodo.js";
-function createTodo(title, description, dueDate, priority) {
+function createTodo(title, dueDate, priority) {
     return {
         title,
-        description,
         dueDate,
         priority,
         completed: false
@@ -23,7 +22,7 @@ function addTodo(e){
     e.preventDefault();
     const formData = new FormData(form);
     const projectName = state.activeProject;
-    const newTodo = createTodo(formData.get('title'),formData.get('description'),formData.get('dueDate'),formData.get('priority'));
+    const newTodo = createTodo(formData.get('title'),formData.get('dueDate'),formData.get('priority'));
     console.log(newTodo);
     if(newTodo.title != "" && projects[projectName].findIndex(data => data.title === newTodo.title) == -1){
         projects[projectName].push(newTodo);
@@ -32,5 +31,4 @@ function addTodo(e){
     }
     document.querySelector('#newTodo').close();
     document.querySelector("#title").value = ""
-    document.querySelector("#description").value = ""
 }

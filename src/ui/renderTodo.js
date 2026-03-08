@@ -25,10 +25,16 @@ function renderTodos(){
 
         const label = document.createElement("div");
         label.textContent = todo.title;
+        const date = document.createElement("div")
+        date.textContent = todo.dueDate;
+        date.classList.add('dueDate');
+
+
+
 
         div.appendChild(checkbox);
         div.appendChild(label);
-
+        div.appendChild(date)
 
         container.prepend(div);
     });
