@@ -1,84 +1,482 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Limelight&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;700;800&display=swap');
 
-*{
-  box-sizing:border-box;
-}
-.jost-regular {
-  font-family: "Jost", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.dueDate{
-  background-color: burlywood;
-  color: brown;
-  border-radius: 0.2rem;
-  padding: 1px;
-   margin-left: auto;
-}
-html,body{
-  height:100%;
+/* ── RESET & BASE ─────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
-}
-
-header{
-  display: flex;
-  justify-content: center;
-  background-color: rgb(0, 52, 80);
-}
-.head{
-  font-size: 3rem;
-}
-main{
-  display: flex;
-  flex-direction: row;
-  min-height: 100%;
   padding: 0;
 }
-.currProjects{
-  display: flex;
-  flex-direction: column;
-  row-gap: 0.5rem;
-}
-nav{
-  padding: 1vw;
-  border-right:  solid rgb(255, 255, 255);
-}
-.singleTodo{
-  border: solid;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  margin: 1rem;
-  display: flex;
-  gap: 2vw;
-}
-.todos{
-  width: 100%;
-  margin: 0rem 2rem;
-}
-#addTodo{
- width: calc(100% - 2rem);
- text-align: left;
- display: block;
- margin: 1rem ;
- padding: 1rem;
-}
-#addTodo:focus{
-    outline:none;
-    box-shadow:none;
-    background-color: #27272a;
-}
-.low{
-  border: solid rgb(0, 255, 13);
-}
-.mid{
-  border: solid rgb(251, 255, 0);
-}
-.high{
-  border: solid rgb(255, 17, 0);
+
+:root {
+  --bg:         #141414;
+  --surface:    #1c1c1c;
+  --surface2:   #242424;
+  --border:     #303030;
+  --border-dim: #272727;
+  --text:       #d4d0c8;
+  --text-dim:   #787670;
+  --text-muted: #484644;
+  --accent:     #c8f135;
+  --accent-dim: rgba(200,241,53,.10);
+  --low:        #39ff7a;
+  --mid:        #ffd700;
+  --high:       #ff3c3c;
 }
 
-.completed{
+html, body {
+  height: 100%;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "DM Mono", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── SCROLLBAR ────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* ── HEADER ───────────────────────────────────────────────── */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 64px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.4;
+}
+
+.head {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.25em;
+  color: var(--text);
+  text-transform: uppercase;
+}
+
+/* ── LAYOUT ───────────────────────────────────────────────── */
+main {
+  display: flex;
+  flex-direction: row;
+  min-height: calc(100vh - 64px);
+}
+
+/* ── SIDEBAR / NAV ────────────────────────────────────────── */
+nav {
+  width: 220px;
+  min-width: 220px;
+  padding: 2rem 1.2rem;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: var(--surface);
+}
+
+.currProjects {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.currProjects h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--accent-dim);
+}
+
+/* project buttons */
+button.project,
+.currProjects button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 0;
+  color: var(--text-dim);
+  font-family: "DM Mono", monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  padding: 0.55rem 0.7rem;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  position: relative;
+}
+
+button.project:hover,
+.currProjects button:hover {
+  color: var(--text);
+  background: var(--surface2);
+  border-color: var(--border);
+}
+
+/* active project */
+button.project.outline,
+.currProjects button.outline {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-dim);
+  font-weight: 500;
+}
+
+/* add project button */
+.addProjects button {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-family: "DM Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  padding: 0.6rem 0.8rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.15s;
+  border-radius: 0;
+}
+
+.addProjects button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+/* ── TODOS AREA ───────────────────────────────────────────── */
+.todos {
+  flex: 1;
+  padding: 2.5rem 3rem;
+  background: var(--bg);
+  overflow-y: auto;
+}
+
+.projectTitle {
+  margin-bottom: 2rem;
+}
+
+.projectHeader {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  letter-spacing: 0.06em;
+  color: var(--text);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* ── ADD TODO BUTTON ──────────────────────────────────────── */
+#addTodo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 1px dashed var(--border);
+  color: var(--text-muted);
+  font-family: "DM Mono", monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 1rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 1.5rem;
+  border-radius: 0;
+}
+
+#addTodo::before {
+  content: '+';
+  font-size: 1.1rem;
+  color: var(--text-dim);
+  transition: color 0.2s;
+}
+
+#addTodo:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+#addTodo:hover::before {
+  color: var(--accent);
+}
+
+#addTodo:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+/* ── TODO CARDS ───────────────────────────────────────────── */
+.todo-projects {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.singleTodo {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border);
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+
+.singleTodo:hover {
+  background: var(--surface2);
+  transform: translateX(2px);
+}
+
+.singleTodo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 60%, var(--surface2));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.singleTodo:hover::after { opacity: 1; }
+
+/* priority border colors */
+.singleTodo.low  { border-left-color: var(--low);  }
+.singleTodo.mid  { border-left-color: var(--mid);  }
+.singleTodo.high { border-left-color: var(--high); }
+
+/* completed state */
+.singleTodo.completed {
+  opacity: 0.35;
+}
+
+.singleTodo.completed > div:first-of-type {
   text-decoration: line-through;
-  opacity: 0.3;
+  color: var(--text-dim);
+}
+
+/* ── CHECKBOX ─────────────────────────────────────────────── */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+input[type="checkbox"]:hover {
+  border-color: var(--accent);
+}
+
+input[type="checkbox"]:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 9px;
+  border: 2px solid var(--bg);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+/* ── DUE DATE BADGE ───────────────────────────────────────── */
+.dueDate {
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.5rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── DIALOG / MODAL ───────────────────────────────────────── */
+dialog {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  color: var(--text);
+  padding: 0;
+  max-width: 420px;
+  width: 90vw;
+  border-radius: 0;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(200,241,53,0.05);
+}
+
+dialog::backdrop {
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(4px);
+}
+
+dialog header {
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  position: relative;
+}
+
+dialog header h3 {
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+dialog > form > div,
+dialog form > div {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+dialog footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  background: var(--surface);
+}
+
+/* ── FORM ELEMENTS ────────────────────────────────────────── */
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+input[type="text"],
+input[type="date"],
+input[name="newItem"],
+input[name="title"],
+select {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: "DM Mono", monospace;
+  font-size: 0.85rem;
+  padding: 0.65rem 0.75rem;
+  width: 100%;
+  outline: none;
+  border-radius: 0;
+  transition: border-color 0.15s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(200,241,53,0.08);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.4);
+  cursor: pointer;
+}
+
+select option {
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* ── DIALOG BUTTONS ───────────────────────────────────────── */
+dialog button[type="submit"],
+dialog button[value="save"] {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  font-family: "DM Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.4rem;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  border-radius: 0;
+}
+
+dialog button[type="submit"]:hover,
+dialog button[value="save"]:hover {
+  opacity: 0.85;
+}
+
+dialog button.outline,
+dialog button[command="close"] {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  font-family: "DM Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  border-radius: 0;
+}
+
+dialog button.outline:hover,
+dialog button[command="close"]:hover {
+  border-color: var(--text-dim);
+  color: var(--text);
+}
+
+/* ── UTILITY ──────────────────────────────────────────────── */
+.jost-regular {
+  font-family: "DM Mono", monospace;
+  font-weight: 400;
 }
