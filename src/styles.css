@@ -268,7 +268,7 @@ button.project.outline,
   transition: opacity 0.2s;
 }
 
-.singleTodo:hover::after { opacity: 0; }
+.singleTodo:hover::after { opacity: 1; }
 
 /* priority border colors */
 .singleTodo.low  { border-left-color: var(--low);  }
@@ -484,4 +484,34 @@ dialog button[command="close"]:hover {
 .jost-regular {
   font-family: "DM Mono", monospace;
   font-weight: 400;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+#menuToggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1.1rem;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  #menuToggle { display: block; }
+
+  nav {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    height: calc(100vh - 64px);
+    z-index: 99;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    border-right: 1px solid var(--border);
+  }
+
+  nav.open { transform: translateX(0); }
+
+  .todos { padding: 1.2rem; }
 }
