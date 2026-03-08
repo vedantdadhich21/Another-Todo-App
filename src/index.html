@@ -7,6 +7,10 @@
     <title>Will Never Do</title>
     <link rel="stylesheet" href="styles.css" />
     <script type="module" src="index.js"></script>
+    <style>
+  body { opacity: 0; transition: opacity 0.2s ease; }
+</style>
+
 </head>
 
 <body data-theme="dark">
@@ -77,6 +81,11 @@
            
         </div>
     </main>
+    <script>
+  window.addEventListener("load", () => {
+    document.body.style.opacity = "1";
+  });
+</script>
 </body>
 
 </html>
