@@ -1,32 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;700;800&display=swap');
 
 /* ── RESET & BASE ─────────────────────────────────────────── */
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 :root {
-  --bg: #141414;
-  --surface: #1c1c1c;
-  --surface2: #242424;
-  --border: #303030;
+  --bg:         #141414;
+  --surface:    #1c1c1c;
+  --surface2:   #242424;
+  --border:     #303030;
   --border-dim: #272727;
-  --text: #d4d0c8;
-  --text-dim: #787670;
+  --text:       #d4d0c8;
+  --text-dim:   #787670;
   --text-muted: #484644;
-  --accent: #c8f135;
-  --accent-dim: rgba(200, 241, 53, .10);
-  --low: #39ff7a;
-  --mid: #ffd700;
-  --high: #ff3c3c;
+  --accent:     #c8f135;
+  --accent-dim: rgba(200,241,53,.10);
+  --low:        #39ff7a;
+  --mid:        #ffd700;
+  --high:       #ff3c3c;
 }
 
-html,
-body {
+html, body {
   height: 100%;
   background-color: var(--bg);
   color: var(--text);
@@ -37,18 +34,9 @@ body {
 }
 
 /* ── SCROLLBAR ────────────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 4px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 2px;
-}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
 /* ── HEADER ───────────────────────────────────────────────── */
 header {
@@ -280,29 +268,19 @@ button.project.outline,
   transition: opacity 0.2s;
 }
 
-.singleTodo:hover::after {
-  opacity: 0;
-}
+.singleTodo:hover::after { opacity: 0; }
 
 /* priority border colors */
-.singleTodo.low {
-  border-left-color: var(--low);
-}
-
-.singleTodo.mid {
-  border-left-color: var(--mid);
-}
-
-.singleTodo.high {
-  border-left-color: var(--high);
-}
+.singleTodo.low  { border-left-color: var(--low);  }
+.singleTodo.mid  { border-left-color: var(--mid);  }
+.singleTodo.high { border-left-color: var(--high); }
 
 /* completed state */
 .singleTodo.completed {
   opacity: 0.35;
 }
 
-.singleTodo.completed>div:first-of-type {
+.singleTodo.completed > div:first-of-type {
   text-decoration: line-through;
   color: var(--text-dim);
 }
@@ -366,11 +344,16 @@ dialog {
   max-width: 420px;
   width: 90vw;
   border-radius: 0;
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(200, 241, 53, 0.05);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(200,241,53,0.05);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
 }
 
 dialog::backdrop {
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0,0,0,0.75);
   backdrop-filter: blur(4px);
 }
 
@@ -390,8 +373,8 @@ dialog header h3 {
   color: var(--text);
 }
 
-dialog>form>div,
-dialog form>div {
+dialog > form > div,
+dialog form > div {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -441,7 +424,7 @@ select {
 input:focus,
 select:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(200, 241, 53, 0.08);
+  box-shadow: 0 0 0 2px rgba(200,241,53,0.08);
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {

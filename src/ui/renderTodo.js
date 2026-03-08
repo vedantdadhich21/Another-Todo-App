@@ -22,7 +22,7 @@ function renderTodos() {
             persist();
             renderTodos();
         });
-        // after you create the `date` element, add:
+       
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent = "✕";
         deleteBtn.addEventListener("click", () => {
@@ -32,7 +32,7 @@ function renderTodos() {
             renderTodos();
         });
 
-        // before container.prepend(div)
+       
 
         const label = document.createElement("div");
         label.textContent = todo.title;
