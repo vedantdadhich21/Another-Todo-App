@@ -1,19 +1,19 @@
 import { persist, projects, state } from "../project.js";
-function renderTodos(){
+function renderTodos() {
 
     const container = document.querySelector(".todo-projects");
-   container.innerHTML = ""
+    container.innerHTML = ""
 
     projects[state.activeProject].forEach(todo => {
 
         const div = document.createElement("div");
         div.classList.add("singleTodo");
         div.classList.add(`${todo.priority}`)
-        if(todo.completed){
+        if (todo.completed) {
             div.classList.add('completed');
         }
 
-       const checkbox = document.createElement("input");
+        const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.checked = todo.completed;
 
@@ -22,6 +22,17 @@ function renderTodos(){
             persist();
             renderTodos();
         });
+        // after you create the `date` element, add:
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "✕";
+        deleteBtn.addEventListener("click", () => {
+            const idx = projects[state.activeProject].indexOf(todo);
+            projects[state.activeProject].splice(idx, 1);
+            persist();
+            renderTodos();
+        });
+
+        // before container.prepend(div)
 
         const label = document.createElement("div");
         label.textContent = todo.title;
@@ -31,10 +42,10 @@ function renderTodos(){
 
 
 
-
         div.appendChild(checkbox);
         div.appendChild(label);
-        div.appendChild(date)
+        div.appendChild(date);
+        div.appendChild(deleteBtn);
 
         container.prepend(div);
     });
@@ -47,4 +58,4 @@ function renderTodos(){
     console.log(projects)
 }
 
-export {renderTodos}
+export { renderTodos }
